@@ -1,55 +1,54 @@
 package Tweet;
 
 import java.io.*;
-
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 
 public class tweet {
-    public static void main(String[] args) throws IOException, TwitterException {
-    	String tweet = "";
-    	try{
-    		tweet += "y˜^‰æI—¹z "+args[1]+" "+args[0]+" ["+args[2]+"]\n";
-    	} catch(ArrayIndexOutOfBoundsException e){
-    		System.out.println("ˆø”‚ª³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
-    	}
-    	try{
-    		File logfile = new File("tvrock.log2");
-    		FileReader filereader = new FileReader (logfile);
-    		BufferedReader br = new BufferedReader(filereader);
-    		String str = br.readLine();
-
-    		while(str!=null){
-    			str = br.readLine();
-    			try{
-    				if(str.indexOf(args[0]) != -1 && str.indexOf("˜^‰æI—¹ Card=OK") != -1){
-    					try{
-    						String[] log = str.split(",");
-    						tweet += "["+ log[1].trim() +", "+ log[2].trim() +", "+ log[4].trim() +", "+ log[5].trim() +"]";
-    						break;
-    					} catch(ArrayIndexOutOfBoundsException e){
-    						System.out.println("ƒƒOƒf[ƒ^‚ÉŠY“–€–Ú‚Í‚ ‚è‚Ü‚¹‚ñ");
-    						break;
-    					}
-    				}
-    			}catch(NullPointerException e){
-    				System.out.println("ƒƒOƒf[ƒ^‚ÉŠY“–€–Ú‚Í‚ ‚è‚Ü‚¹‚ñB");
-				break;
-    			}
-    		}
-    		br.close();
-    	}catch(FileNotFoundException e){
-    		System.out.println(e);
-    	}catch(IOException e){
-    		System.out.println(e);
-    	}
-    	
-        Twitter twitter = new TwitterFactory().getInstance();
-        Status status = twitter.updateStatus(tweet);
-
-    	System.out.println(tweet);
-    }
-
+	public static void main(String[] args) throws IOException, TwitterException {
+		String tweet = "";
+		try {
+			tweet += "ã€éŒ²ç”»çµ‚äº†ã€‘ " + args[1] + " " + args[0] + " [" + args[2]
+					+ "]\n";
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("å¼•æ•°ãŒæ­£ã—ãè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
+		}
+		try {
+			File logfile = new File("tvrock.log2");
+			FileReader filereader = new FileReader(logfile);
+			BufferedReader br = new BufferedReader(filereader);
+			String str = br.readLine();
+			while (str != null) {
+				str = br.readLine();
+				try {
+					if (str.indexOf(args[0]) != -1
+							&& str.indexOf("éŒ²ç”»çµ‚äº† Card=OK") != -1) {
+						try {
+							String[] log = str.split(",");
+							tweet += "[" + log[1].trim() + ", " + log[2].trim()
+									+ ", " + log[4].trim() + ", "
+									+ log[5].trim() + "]";
+							break;
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("ãƒ­ã‚°ãƒ‡ãƒ¼ã‚¿ã«è©²å½“é …ç›®ã¯ã‚ã‚Šã¾ã›ã‚“");
+							break;
+						}
+					}
+				} catch (NullPointerException e) {
+					System.out.println("ãƒ­ã‚°ãƒ‡ãƒ¼ã‚¿ã«è©²å½“é …ç›®ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
+					break;
+				}
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		Twitter twitter = new TwitterFactory().getInstance();
+		Status status = twitter.updateStatus(tweet);
+		System.out.println(tweet);
+	}
 }
